@@ -24,7 +24,7 @@ app.use(function(req, res) {
 });
 
 //create node.js http server and listen on port
-http.createServer(app).listen(4000);
+http.createServer(app).listen(process.env.PORT || 4000);
 
 // test it locally from the command line
 // > curl -X GET localhost:3000 # Hello, your ip address is ::1 and is of type IPv6

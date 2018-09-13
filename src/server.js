@@ -12,7 +12,7 @@ var requestIp = require('request-ip');
 app.use(requestIp.mw({ attributeName : 'myCustomAttributeName' }))
 
 // respond to all requests
-app.use(function(req, res) {
+app.use('/giveMyIP', function(req, res) {
 
     // use our custom attributeName that we registered in the middleware
     var ip = req.myCustomAttributeName;

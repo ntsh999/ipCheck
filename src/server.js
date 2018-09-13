@@ -19,8 +19,11 @@ app.use('/giveMyIP', function(req, res) {
     console.log(ip);
 
     // https://nodejs.org/api/net.html#net_net_isip_input
-    var ipType = net.isIP(ip); // returns 0 for invalid, 4 for IPv4, and 6 for IPv6
-    res.end('Hello, your ip address is ' + ip + ' and is of type IPv' + ipType + '\n');
+    //var ipType = net.isIP(ip); // returns 0 for invalid, 4 for IPv4, and 6 for IPv6
+    //res.end('Hello, your ip address is ' + ip + ' and is of type IPv' + ipType + '\n');
+    
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    res.end('Hello, the client ip address is '+ip);
 });
 
 //create node.js http server and listen on port
